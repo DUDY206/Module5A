@@ -20,8 +20,7 @@ namespace Modul5A
             InitializeComponent();
         }
 
-        List<double> list_price = new List<double>();
-        int num_amenities = 0, num_amenities_selected = 0;
+        int num_amenities = 0, num_amenities_selected = 0,total_payable=0;
         
         private void btnOK_Click(object sender, EventArgs e)
         {
@@ -42,6 +41,7 @@ namespace Modul5A
                 //MessageBox.Show("OK");
                 while (sdr.Read())
                 {
+                    //Lấy thông tin đổ ra giao diên
                     txtName.Text = sdr.GetString(0) +" "+ sdr.GetString(1);
                     txtCabinClass.Text = sdr.GetString(2);
                     txtPPNum.Text = sdr.GetString(3);
@@ -63,17 +63,23 @@ namespace Modul5A
                     cmd = new SqlCommand(query, con);
                     sdr = cmd.ExecuteReader();
 
-                    
+                    //Xóa hết checkbox cũ
+                    int c = groupBox2.Controls.Count;
+
+                    for (int i = c - 1; i >= 0; i--)
+                        groupBox2.Controls.Remove(groupBox2.Controls[i]);
+
+                    //Đổ ra thông tin nếu tra được mã booking
                     if (sdr.HasRows)
                     {
                         int index_top = 0,index_left=0;
                         while (sdr.Read())
                         {
+                            //tạo các checkbox mới khi tra được mã booking
                             CheckBox checkbox_t = new CheckBox();
                             this.groupBox2.Controls.Add(checkbox_t);
 
-                            
-                            //checkbox_t.Text = sdr.GetString(0) ;
+                            //định vị tọa độ các checkbox theo cột
                             checkbox_t.AutoSize = true;
                             checkbox_t.Location = new Point(17 + index_left * 200, 19 + index_top * 19);
                             if (index_top != 3)
@@ -87,7 +93,7 @@ namespace Modul5A
                             }
 
                             double price = sdr.GetDouble(1);
-                            list_price.Add(price);
+                            checkbox_t.Tag = price;
                             if (price != 0)
                             {
                                 checkbox_t.Text = sdr.GetString(0) + " ($" + price.ToString() + ")";
@@ -97,10 +103,10 @@ namespace Modul5A
                                 checkbox_t.Enabled = false;
                                 checkbox_t.Text = sdr.GetString(0) + " (FREE)";
                                 num_amenities_selected++;
+
                             }
                             checkbox_t.Name = "cbx_amen" + num_amenities.ToString();
-                            num_amenities++;
-
+                            checkbox_t.Click += chk_Clicked;
                         }
                     }
                     else
@@ -116,9 +122,26 @@ namespace Modul5A
 
         }
 
+        protected void chk_Clicked(object sender,EventArgs e)
+        {
+            CheckBox chk = (sender as CheckBox);
+            if (chk.Checked)
+            {
+                total_payable += int.Parse(chk.Tag.ToString());
+                num_amenities_selected++;
+            }
+            else
+            {
+                total_payable -= int.Parse(chk.Tag.ToString());
+                num_amenities_selected--;
+            }
+            ttp.Text = total_payable.ToString();
+            lb_it_selected.Text = num_amenities_selected.ToString();
+        }
+
         private void PurchaseAmentities_Load(object sender, EventArgs e)
         {
-            lb_it_selected.Text = num_amenities.ToString();
+                lb_it_selected.Text = num_amenities_selected.ToString();
         }
     }
 }

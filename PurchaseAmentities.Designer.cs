@@ -44,6 +44,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lb_it_selected = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dt_tx = new System.Windows.Forms.Label();
+            this.ttp = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -183,17 +187,57 @@
             // lb_it_selected
             // 
             this.lb_it_selected.AutoSize = true;
-            this.lb_it_selected.Location = new System.Drawing.Point(101, 314);
+            this.lb_it_selected.Location = new System.Drawing.Point(117, 314);
             this.lb_it_selected.Name = "lb_it_selected";
             this.lb_it_selected.Size = new System.Drawing.Size(35, 13);
             this.lb_it_selected.TabIndex = 11;
             this.lb_it_selected.Text = "label7";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(17, 337);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(89, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Duties and taxes:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(17, 360);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(75, 13);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Total Payable:";
+            // 
+            // dt_tx
+            // 
+            this.dt_tx.AutoSize = true;
+            this.dt_tx.Location = new System.Drawing.Point(117, 337);
+            this.dt_tx.Name = "dt_tx";
+            this.dt_tx.Size = new System.Drawing.Size(30, 13);
+            this.dt_tx.TabIndex = 14;
+            this.dt_tx.Text = "dt_tx";
+            // 
+            // ttp
+            // 
+            this.ttp.AutoSize = true;
+            this.ttp.Location = new System.Drawing.Point(117, 360);
+            this.ttp.Name = "ttp";
+            this.ttp.Size = new System.Drawing.Size(19, 13);
+            this.ttp.TabIndex = 15;
+            this.ttp.Text = "ttp";
             // 
             // PurchaseAmentities
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(643, 391);
+            this.Controls.Add(this.ttp);
+            this.Controls.Add(this.dt_tx);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.lb_it_selected);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox2);
@@ -235,5 +279,9 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lb_it_selected;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label dt_tx;
+        private System.Windows.Forms.Label ttp;
     }
 }

@@ -1,0 +1,22 @@
+C:\Users\DUY\source\repos\Modul5A\bin\Debug\Modul5A.exe.config
+C:\Users\DUY\source\repos\Modul5A\bin\Debug\Modul5A.exe
+C:\Users\DUY\source\repos\Modul5A\bin\Debug\Modul5A.pdb
+C:\Users\DUY\source\repos\Modul5A\obj\Debug\Modul5A.csprojAssemblyReference.cache
+C:\Users\DUY\source\repos\Modul5A\obj\Debug\Modul5A.Properties.Resources.resources
+C:\Users\DUY\source\repos\Modul5A\obj\Debug\Modul5A.csproj.GenerateResource.cache
+C:\Users\DUY\source\repos\Modul5A\obj\Debug\Modul5A.exe
+C:\Users\DUY\source\repos\Modul5A\obj\Debug\Modul5A.pdb
+C:\Users\DUY\source\repos\Modul5A\obj\Debug\Modul5A.Login.resources
+C:\Users\DUY\source\repos\Modul5A\obj\Debug\Modul5A.MainOptions.resources
+C:\Users\DUY\source\repos\Modul5A\obj\Debug\Modul5A.PurchaseAmentities.resources
+C:\Users\DUY\Desktop\New folder\Module5A\bin\Debug\Modul5A.exe.config
+C:\Users\DUY\Desktop\New folder\Module5A\bin\Debug\Modul5A.exe
+C:\Users\DUY\Desktop\New folder\Module5A\bin\Debug\Modul5A.pdb
+C:\Users\DUY\Desktop\New folder\Module5A\obj\Debug\Modul5A.csprojAssemblyReference.cache
+C:\Users\DUY\Desktop\New folder\Module5A\obj\Debug\Modul5A.Login.resources
+C:\Users\DUY\Desktop\New folder\Module5A\obj\Debug\Modul5A.MainOptions.resources
+C:\Users\DUY\Desktop\New folder\Module5A\obj\Debug\Modul5A.Properties.Resources.resources
+C:\Users\DUY\Desktop\New folder\Module5A\obj\Debug\Modul5A.PurchaseAmentities.resources
+C:\Users\DUY\Desktop\New folder\Module5A\obj\Debug\Modul5A.csproj.GenerateResource.cache
+C:\Users\DUY\Desktop\New folder\Module5A\obj\Debug\Modul5A.exe
+C:\Users\DUY\Desktop\New folder\Module5A\obj\Debug\Modul5A.pdb
