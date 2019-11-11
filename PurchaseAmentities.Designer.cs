@@ -189,9 +189,9 @@
             this.lb_it_selected.AutoSize = true;
             this.lb_it_selected.Location = new System.Drawing.Point(117, 314);
             this.lb_it_selected.Name = "lb_it_selected";
-            this.lb_it_selected.Size = new System.Drawing.Size(35, 13);
+            this.lb_it_selected.Size = new System.Drawing.Size(13, 13);
             this.lb_it_selected.TabIndex = 11;
-            this.lb_it_selected.Text = "label7";
+            this.lb_it_selected.Text = "0";
             // 
             // label7
             // 
@@ -225,9 +225,9 @@
             this.ttp.AutoSize = true;
             this.ttp.Location = new System.Drawing.Point(117, 360);
             this.ttp.Name = "ttp";
-            this.ttp.Size = new System.Drawing.Size(19, 13);
+            this.ttp.Size = new System.Drawing.Size(13, 13);
             this.ttp.TabIndex = 15;
-            this.ttp.Text = "ttp";
+            this.ttp.Text = "0";
             // 
             // PurchaseAmentities
             // 

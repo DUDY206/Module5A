@@ -19,18 +19,32 @@ namespace Modul5A
         {
             InitializeComponent();
         }
-
-        int num_amenities = 0, num_amenities_selected = 0,total_payable=0;
-        
+        //dictionary "amenities - price"
+        Dictionary<string, bool> select_amt = new Dictionary<string, bool>();
+        Dictionary<string, double> amt_pri = new Dictionary<string, double>();
+        int num_amenities_selected = 0;
+        double total_payable=0;
+        string tick_id;
         private void btnOK_Click(object sender, EventArgs e)
         {
+            //Xóa hết checkbox cũ, dictionary cũ, thông tin cũ lưu lại từ phiên tra cứu trước
+            int c = groupBox2.Controls.Count;
 
+            for (int i = c - 1; i >= 0; i--)
+                groupBox2.Controls.Remove(groupBox2.Controls[i]);
+            select_amt.Clear();
+            amt_pri.Clear();
+            total_payable = 0;
+            num_amenities_selected = 0;
+            lb_it_selected.Text = "0";
+            ttp.Text = "0";
+            //CONNECTION
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-Q1QGNFE;Initial Catalog=module5a;Integrated Security=True");
             string query = "SELECT Tickets.FirstName,Tickets.LastName,CabinTypes.Name,Tickets.PassportNumber,Schedules.ID,Routes.DepartureAirportID,Routes.ArrivalAirportID,Schedules.Date,Schedules.Time,CabinTypes.ID,Tickets.ID FROM Tickets INNER JOIN Schedules ON Tickets.ScheduleID = Schedules.ID INNER JOIN Routes ON Schedules.RouteID = Routes.ID INNER JOIN CabinTypes ON Tickets.CabinType = CabinTypes.ID WHERE Tickets.BookingReference = '" + txtBR.Text+"'";
             SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
 
-            string Sched_ID, DA_ID, AA_ID,tick_id,cabin_id ;
+            string Sched_ID, DA_ID, AA_ID,cabin_id ;
             DateTime Sched_Date;
             TimeSpan Sched_Time;
             SqlDataReader sdr = cmd.ExecuteReader();
@@ -58,17 +72,12 @@ namespace Modul5A
 
                    
                     sdr.Close();
-                    query = "SELECT Amenities.AmenService,Amenities.Price FROM Amenities INNER JOIN AmenitiesCabinType ON Amenities.ID = AmenitiesCabinType.AmenitiesID WHERE AmenitiesCabinType.CabinTypeID = '"+ cabin_id + "'";
+                    query = "SELECT Amenities.AmenService,Amenities.Price,AmenitiesID FROM Amenities INNER JOIN AmenitiesCabinType ON Amenities.ID = AmenitiesCabinType.AmenitiesID WHERE AmenitiesCabinType.CabinTypeID = '" + cabin_id + "'";
 
                     cmd = new SqlCommand(query, con);
                     sdr = cmd.ExecuteReader();
 
-                    //Xóa hết checkbox cũ
-                    int c = groupBox2.Controls.Count;
-
-                    for (int i = c - 1; i >= 0; i--)
-                        groupBox2.Controls.Remove(groupBox2.Controls[i]);
-
+                    
                     //Đổ ra thông tin nếu tra được mã booking
                     if (sdr.HasRows)
                     {
@@ -93,7 +102,11 @@ namespace Modul5A
                             }
 
                             double price = sdr.GetDouble(1);
-                            checkbox_t.Tag = price;
+                            string amt_id = sdr.GetString(2);
+                            checkbox_t.Tag = amt_id;
+                            amt_pri.Add(amt_id, price);
+                            select_amt.Add(amt_id, false);
+
                             if (price != 0)
                             {
                                 checkbox_t.Text = sdr.GetString(0) + " ($" + price.ToString() + ")";
@@ -105,7 +118,6 @@ namespace Modul5A
                                 num_amenities_selected++;
 
                             }
-                            checkbox_t.Name = "cbx_amen" + num_amenities.ToString();
                             checkbox_t.Click += chk_Clicked;
                         }
                     }
@@ -125,14 +137,18 @@ namespace Modul5A
         protected void chk_Clicked(object sender,EventArgs e)
         {
             CheckBox chk = (sender as CheckBox);
+            string chk_tag = chk.Tag.ToString();
+            double price = amt_pri[chk_tag];
             if (chk.Checked)
             {
-                total_payable += int.Parse(chk.Tag.ToString());
+                total_payable += price;
+                select_amt[chk_tag] = true;
                 num_amenities_selected++;
             }
             else
             {
-                total_payable -= int.Parse(chk.Tag.ToString());
+                total_payable -= price;
+                select_amt[chk_tag] = false;
                 num_amenities_selected--;
             }
             ttp.Text = total_payable.ToString();
