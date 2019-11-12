@@ -11,8 +11,10 @@ using System.Data.SqlClient;
 
 namespace Modul5A
 {
+
     public partial class Login : Form
     {
+        public static int user_id;
         public Login()
         {
             InitializeComponent();
@@ -28,14 +30,18 @@ namespace Modul5A
         private void btnLogin_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-Q1QGNFE;Initial Catalog=module5a;Integrated Security=True");
-            string query = "SELECT * FROM Users where ID = '" + txtUserName.Text + "' AND Password = '" + txtPassWord.Text+"'";
-            SqlDataAdapter sda = new SqlDataAdapter(query, con);
-            DataTable dtb = new DataTable();
-            sda.Fill(dtb);
+            string query = "SELECT ID FROM Users where Email = '" + txtUserName.Text + "' AND Password = '" + txtPassWord.Text+"'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
 
-            if (dtb.Rows.Count == 1)
+            if (sdr.HasRows)
             {
-                MessageBox.Show("Login successfully");
+                while (sdr.Read())
+                {
+                    user_id = sdr.GetInt32(0);
+                }
+                MessageBox.Show("Login successfully " + user_id.ToString());
                 MainOptions mainOptions = new MainOptions();
                 mainOptions.Show();
             }

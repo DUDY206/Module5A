@@ -48,6 +48,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dt_tx = new System.Windows.Forms.Label();
             this.ttp = new System.Windows.Forms.Label();
+            this.btnconfirmed_buy = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.test_string = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,6 +100,7 @@
             this.btnShowBR.TabIndex = 2;
             this.btnShowBR.Text = "Show Amenities";
             this.btnShowBR.UseVisualStyleBackColor = true;
+            this.btnShowBR.Click += new System.EventHandler(this.btnShowBR_Click);
             // 
             // txtTicketInfo
             // 
@@ -229,11 +233,43 @@
             this.ttp.TabIndex = 15;
             this.ttp.Text = "0";
             // 
+            // btnconfirmed_buy
+            // 
+            this.btnconfirmed_buy.Location = new System.Drawing.Point(394, 314);
+            this.btnconfirmed_buy.Name = "btnconfirmed_buy";
+            this.btnconfirmed_buy.Size = new System.Drawing.Size(162, 23);
+            this.btnconfirmed_buy.TabIndex = 0;
+            this.btnconfirmed_buy.Text = "Save and confirm";
+            this.btnconfirmed_buy.UseVisualStyleBackColor = true;
+            this.btnconfirmed_buy.Click += new System.EventHandler(this.btnconfirmed_buy_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(394, 343);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(162, 23);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "Exit";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // test_string
+            // 
+            this.test_string.AutoSize = true;
+            this.test_string.Location = new System.Drawing.Point(165, 314);
+            this.test_string.Name = "test_string";
+            this.test_string.Size = new System.Drawing.Size(35, 13);
+            this.test_string.TabIndex = 17;
+            this.test_string.Text = "label9";
+            // 
             // PurchaseAmentities
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(643, 391);
+            this.Controls.Add(this.test_string);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnconfirmed_buy);
             this.Controls.Add(this.ttp);
             this.Controls.Add(this.dt_tx);
             this.Controls.Add(this.label8);
@@ -283,5 +319,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label dt_tx;
         private System.Windows.Forms.Label ttp;
+        private System.Windows.Forms.Button btnconfirmed_buy;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label test_string;
     }
 }

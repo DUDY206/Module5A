@@ -18,7 +18,7 @@ namespace Modul5A
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PurchaseAmentities());
+            Application.Run(new Login());
         }
     }
 }
