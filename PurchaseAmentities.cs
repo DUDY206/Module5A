@@ -64,8 +64,10 @@ namespace Modul5A
                     tick_id = sdr.GetInt32(10);
 
 
-                    txtTicketInfo.Text = Sched_ID + ", " + DA_ID + "-" + AA_ID + ", " + Sched_Date.Date.ToString("dd/MM/yyyy") + ", " + Sched_Time.ToString("hh\\:mm");
+                    string temp = Sched_ID + ", " + DA_ID + "-" + AA_ID + ", " + Sched_Date.Date.ToString("dd/MM/yyyy") + ", " + Sched_Time.ToString("hh\\:mm");
+                    txtTicketInfo.Items.Add(temp);
                 }
+                txtTicketInfo.Text = txtTicketInfo.Items[0].ToString();
             }
             else
             {
@@ -205,6 +207,7 @@ namespace Modul5A
                 groupBox2.Controls.Remove(groupBox2.Controls[i]);
             select_amt.Clear();
             amt_pri.Clear();
+            txtTicketInfo.Items.Clear();
         }
 
     }
